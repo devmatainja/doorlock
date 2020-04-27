@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:orientation="vertical">
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+
+        android:text="Saved WiFi Setting"
+        android:textSize="20sp"
+
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"
+        android:paddingBottom="10dp"
+        />
+                <TextView
+                    android:id="@+id/info_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+
+
+                    android:textSize="20sp"
+                    android:text="@string/SETTING_DEVICE_WIFI_REBOOT"
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="center"
+                    />
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+
+        android:text="&amp;"
+        android:textSize="23sp"
+
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"
+
+        />
+
+
+                <TextView
+                    android:id="@+id/wificonenct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="35dp"
+
+                    android:text="@string/SETTING_DEVICE_WIFI_REBOOT_DES"
+                    android:textSize="20sp"
+
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="center"
+                    android:paddingBottom="10dp"
+                    />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+
+                    android:gravity="center">
+
+
+
+                    <Button
+                        android:id="@+id/okbttn"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:gravity="center"
+
+                        android:textColor="@color/white"
+                        android:text="OK"
+                        android:theme="@style/AppTheme.GreenRipple" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackground"
+                        android:theme="@style/AppTheme.GreenRipple" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </LinearLayout>
+
+
+
+
+

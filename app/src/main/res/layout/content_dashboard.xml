@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/device_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="5dp"
+        app:cardElevation="2dp"
+        android:background="@color/cardviewbg"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="false">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+
+        >
+
+        <!--Text View for Displaying SIGN IN Text At Top of UI-->
+
+        <ImageView
+            android:id="@+id/room_door"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_door_open" />
+
+
+        <TextView android:id="@+id/device_name"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Device name "
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:fontFamily="@string/font_family_condensed"
+            android:paddingRight="10dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/room_door"
+            />
+
+
+
+
+        <TextView
+            android:id="@+id/device_online"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/device_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@+id/room_door"
+            android:paddingTop="12dp"
+            android:text="Online"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/online"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+
+            android:src="@drawable/ic_wifi_connect"
+
+            android:layout_below="@id/device_name"
+            android:layout_toRightOf="@+id/device_online"
+            />
+        <ImageView
+            android:id="@+id/logout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+
+            android:src="@drawable/ic_power_off"
+
+            android:layout_below="@id/device_name"
+
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
+<RelativeLayout
+    android:id="@+id/door_open_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/device_info_layout"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="30dp"
+    >
+    <ImageView
+        android:id="@+id/door_action"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/door_open_action"
+        />
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/door_loder"
+        style="@style/SpinKitView.Large.DoubleBounce"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        app:SpinKit_Color="@color/colorPrimary"
+
+
+        app:layout_constraintVertical_bias="1.0" />
+    <TextView
+android:id="@+id/door_status"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/door_action"
+android:textStyle="bold"
+        android:text="UnLock"></TextView>
+
+</RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/device_history_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/cardviewbg"
+        android:padding="10dp"
+        app:cardElevation="2dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="5dp"
+        card_view:contentPadding="10dp">
+
+        <RelativeLayout
+            android:id="@+id/device_history_layout_rel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            >
+
+        <TextView
+            android:id="@+id/deviceOpen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:paddingRight="10dp"
+            android:text="Open Today"
+            android:textSize="12sp"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/deviceOpen_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/deviceOpen"
+
+            android:text="333"
+            android:textSize="10sp"
+            android:textStyle="bold"
+
+            />
+
+            <TextView
+            android:id="@+id/door_open_is"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+
+            android:paddingRight="10dp"
+            android:text="Door Status"
+            android:textSize="12sp"
+            android:textStyle="bold"
+
+            />
+
+            <TextView
+                android:id="@+id/door_open_is_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@id/door_open_is"
+                android:layout_centerHorizontal="true"
+
+                android:layout_marginLeft="71dp"
+                android:layout_marginTop="1dp"
+                android:text="OPEN"
+
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/door_open_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:paddingRight="10dp"
+                android:text="Door Open Time"
+                android:textSize="12sp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/door_open_time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@id/door_open_is"
+                android:layout_marginLeft="71dp"
+
+                android:layout_marginTop="1dp"
+                android:layout_alignParentRight="true"
+                android:text="22 march 2020 15:30"
+
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/requires_location"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="15dp"
+       >
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            card_view:cardCornerRadius="10dp"
+            app:cardElevation="4dp"
+            android:background="@color/cardviewbg"
+            app:cardUseCompatPadding="true"
+            app:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+                android:id="@+id/cardlinear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:orientation="vertical"
+                android:padding="5dp"
+                >
+            <TextView
+                android:id="@+id/info_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+
+
+                android:textSize="24sp"
+                android:text="Start Configuration"
+                android:textColor="@color/colorPrimary"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/wificonenct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="80dp"
+                android:fontFamily="@string/font_family_condensed"
+
+                android:text="@string/wifi_connect_string_ap"
+                android:textSize="22sp"
+
+                android:textColor="@color/colorPrimary"
+                android:textAlignment="center"
+                />
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="40dp"
+                    android:fontFamily="@string/font_family_condensed"
+                    android:text="@string/wifi_connect_string_ap_text"
+                    android:textSize="24sp"
+
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="center"
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:fontFamily="@string/font_family_condensed"
+                    android:text="@string/wifi_connect_string_ap_name"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="center"
+                    />
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:fontFamily="@string/font_family_condensed"
+                    android:text="@string/wifi_connect_string_ap_name_display"
+                    android:textSize="24sp"
+
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="center"
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+
+                    android:text="@string/wifi_connect_string_ap_name_continue"
+                    android:textSize="24sp"
+                    android:fontFamily="@string/font_family_condensed"
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="center"
+                    android:paddingBottom="20dp"
+                    />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/continuebbtn"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:gravity="center"
+
+                        android:textColor="@color/white"
+                        android:text="Continue"
+                        android:theme="@style/AppTheme.GreenRipple" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackground"
+                        android:theme="@style/AppTheme.GreenRipple" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</LinearLayout>

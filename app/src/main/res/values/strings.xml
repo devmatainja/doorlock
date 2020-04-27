@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">DoorLock</string>
+    <string name="action_settings">Settings</string>
+    <string name="wifi_connect_string_ap">Restart Device and Press Reset Button \n Yellow  and  Green Lights will be Blink together   </string>
+    <string name="wifi_connect_string_ap_text">Please connect to </string>
+    <string name="wifi_connect_string_ap_name">MatainjaDoorLock</string>
+    <string name="wifi_connect_string_ap_name_display">WIFI and click</string>
+    <string name="AP_MODE_NAME">MatainjaDoorLock</string>
+    <string name="SETTING_DEVICE_NAME">Enter Your Device Name</string>
+
+    <string name="SETTING_DEVICE_WIFI">Wi-Fi Credentials</string>
+    <string name="SETTING_DEVICE_WIFI_REBOOT">Reboot your Device </string>
+
+    <string name="SETTING_DEVICE_WIFI_REBOOT_DES">Please Wait for Connected Device with WiFi</string>
+
+    <string name="wifi_connect_string_ap_name_continue">continue</string>
+    <string name="title_location_permission">Permission</string>
+    <string name="text_location_permission">Please Share your Location its help identify  the Wifi Connection Connected With Phone </string>
+    <string name="ok">OK</string>
+    <string name="router_configure">Wifi Configure to Device DoorLock</string>
+    <string name="already_router_configure">Door Lock Already Configured</string>
+    <string name="router_configure_des">Do you want to Save wifi password in door lock Device ? </string>
+    <string name="door_description">Door Lock is Configured ready to Use? </string>
+</resources>
