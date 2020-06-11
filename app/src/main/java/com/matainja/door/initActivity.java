@@ -25,7 +25,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.matainja.door.Database.DatabaseAdapter;
+import com.matainja.door.Database.FireStoreHelper;
 import com.matainja.door.model.Devices;
 
 public class initActivity extends AppCompatActivity  implements View.OnClickListener {
@@ -38,8 +40,11 @@ public class initActivity extends AppCompatActivity  implements View.OnClickList
 LinearLayout mWifiRouter;
     LinearLayout mwificonfiguredlayout;
     Dialog DeviceNamedialog ;
-    EditText mDeviceEditName;
+    EditText mDeviceEditName,mdevice_sl_no;
     DatabaseAdapter dbHelper;
+    FirebaseFirestore db;
+    FireStoreHelper mFireStoreHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +58,7 @@ LinearLayout mWifiRouter;
         dbHelper = new DatabaseAdapter(this);
         dbHelper.open();
 
+        mFireStoreHelper =new FireStoreHelper();
 
         mWifiRouter = (LinearLayout)findViewById(R.id.wifiSettingbtnlayout);
         mwificonfiguredlayout =(LinearLayout)findViewById(R.id.wificonfiguredlayout);
@@ -60,7 +66,7 @@ LinearLayout mWifiRouter;
         mButton = DeviceNamedialog.findViewById(R.id.savebttn);
 
         mDeviceEditName =DeviceNamedialog.findViewById(R.id.device_name);
-
+        mdevice_sl_no=DeviceNamedialog.findViewById(R.id.device_sl_no);
         mWifiRouter.setOnClickListener(this);
         mwificonfiguredlayout.setOnClickListener(this);
         mButton.setOnClickListener(this);
@@ -145,17 +151,24 @@ LinearLayout mWifiRouter;
                 // Do something
                 boolean save_flag=false;
                 String device_name =mDeviceEditName.getText().toString().trim();
+                String sl_no =mdevice_sl_no.getText().toString().trim();
                 if(device_name.isEmpty())
                 {
                     mDeviceEditName.setHintTextColor(Color.RED);
                     save_flag=true;
                 }
+                if(sl_no.isEmpty())
+                {
+                    mdevice_sl_no.setHintTextColor(Color.RED);
+                    save_flag=true;
+                }
+
                 if(!save_flag)
                 {
-                    DeviceNamedialog.hide();
+                    DeviceNamedialog.cancel();
                     Devices device =new Devices();
                     device.setName(device_name);
-                    device.setDevice_serial("mata12345");
+                    device.setDevice_serial(sl_no);
                     device.setDevice_mac_address("YB:YU:IH:LS");
                     device.setDevice_wifi_name("");
                     device.setDevice_wifi_password("");
@@ -163,8 +176,10 @@ LinearLayout mWifiRouter;
                     device.setJoin_date("14-04-2020");
                     dbHelper.DeviceRegister(device);
 
+                   // mFireStoreHelper.SaveDevice(device,this);
+                    mFireStoreHelper.getDevice(sl_no,device);
 
-                    Intent mainActivity = new Intent(initActivity.this, MainActivity.class);
+                    Intent mainActivity = new Intent(initActivity.this, InternetDashBoard.class);
 
                     startActivity(mainActivity);
                     finish();

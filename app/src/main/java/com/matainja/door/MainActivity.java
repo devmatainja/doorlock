@@ -142,12 +142,24 @@ SpinKitView mdoor_loder;
 
                     String status = jsonObject.getString("status");
                     boolean online = jsonObject.getBoolean("online");
+                    String door_status = jsonObject.getString("door");
                     mdoor_loder.setVisibility(View.INVISIBLE);
                     if(status.equals("200"))
                     {
                         if(online)
                         {
                             deviceStatusOnline();
+
+                            if(door_status.equals("high"))
+                            {
+                                mDoorAction.setImageResource(R.drawable.door_close_action);
+                                mDoor_status.setText("Locked");
+                            }
+                            else
+                            {
+                                mDoorAction.setImageResource(R.drawable.door_open_action);
+                                mDoor_status.setText("Unlock");
+                            }
                         }else
                         {
                             deviceStatusOffline();

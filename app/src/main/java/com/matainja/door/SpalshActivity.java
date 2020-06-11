@@ -11,21 +11,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.matainja.door.Database.DatabaseAdapter;
 
+import java.util.HashMap;
+
 public class SpalshActivity extends AppCompatActivity {
 
     DatabaseAdapter dbHelper;
     Context mContext;
    final long _splashTime=2000;
     Intent mainActivity;
+    SessionManager sessionManager;
+    String mUsername="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        sessionManager = new SessionManager(this);
         mContext=this;
         // database Connection Open
         dbHelper = new DatabaseAdapter(mContext);
         dbHelper.open();
+
+        HashMap<String, String> user = sessionManager.getUser();
+        mUsername = user.get(SessionManager.KEY_USER_NAME);
+
+
 
         /*Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
@@ -36,11 +46,27 @@ public class SpalshActivity extends AppCompatActivity {
             public void run() {
 
                 boolean isdeviceExist =dbHelper.getDeviceExist();
+                HashMap<String, String> user = sessionManager.getUser();
+
+                    mUsername = user.get(SessionManager.KEY_USER_NAME);
 
                 if(isdeviceExist)
-                    mainActivity = new Intent(SpalshActivity.this, MainActivity.class);
+                {
+
+                    mainActivity = new Intent(SpalshActivity.this, InternetDashBoard.class);
+
+                    if(mUsername.isEmpty())
+                    {
+                        mainActivity = new Intent(SpalshActivity.this, RegisterActivity.class);
+                    }
+
+                }
+
                else
-                    mainActivity = new Intent(SpalshActivity.this, initActivity.class);
+                   if(mUsername==null)
+                    mainActivity = new Intent(SpalshActivity.this, RegisterActivity.class);
+                   else
+                       mainActivity = new Intent(SpalshActivity.this, initActivity.class);
 
                 startActivity(mainActivity);
                 finish();

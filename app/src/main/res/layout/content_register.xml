@@ -4,15 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/requires_location"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_vertical"
         android:padding="10dp"
        >
         <androidx.cardview.widget.CardView
@@ -22,10 +25,12 @@
             app:cardElevation="4dp"
             android:background="@color/cardviewbg"
             app:cardUseCompatPadding="true"
+
             app:cardPreventCornerOverlap="false">
             <ScrollView android:layout_marginTop="2dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:id="@+id/scrollView">
             <LinearLayout
                 android:id="@+id/cardlinear"
@@ -34,6 +39,7 @@
                 android:orientation="vertical"
                 android:padding="5dp"
                 >
+
                 <TextView
                     android:id="@+id/info_text"
                     android:layout_width="match_parent"
@@ -41,11 +47,10 @@
                     android:paddingTop="5dp"
 
 
-                    android:textSize="24sp"
-                    android:text="Save Wifi Configuration"
-                    android:textColor="@color/colorPrimary"
+                    android:text="SIGN UP"
                     android:textAlignment="center"
-                    />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/error_save"
@@ -67,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="20dp"
 
-                    android:text="@string/SETTING_DEVICE_NAME"
+                    android:text=""
                     android:textSize="18sp"
 
                     android:textColor="@color/colorPrimary"
@@ -83,16 +88,14 @@
                     app:cardUseCompatPadding="true"
                     app:cardPreventCornerOverlap="false">
 
-                <EditText
-                    android:id="@+id/device_name"
-                    android:layout_height="55dp"
-                    android:theme="@style/App_EditTextStyle"
-                    android:layout_width="match_parent"
-                    android:drawableLeft="@drawable/ic_account"
-                    android:hint=" DEVICE NAME"
-                    android:inputType="textCapWords"
-                    >
-                </EditText>
+                    <EditText
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:drawableLeft="@drawable/ic_account"
+                        android:hint="Your Name"
+                        android:inputType="textCapWords"
+                        android:theme="@style/App_EditTextStyle"></EditText>
 
 
 
@@ -109,54 +112,17 @@
                     app:cardPreventCornerOverlap="false">
 
 
-
                     <EditText
-                        android:id="@+id/device_sl_no"
-                        android:layout_height="55dp"
-                        android:theme="@style/App_EditTextStyle"
+                        android:id="@+id/email"
                         android:layout_width="match_parent"
-                        android:drawableLeft="@drawable/ic_account"
-                        android:hint=" DEVICE SERIAL NO"
+                        android:layout_height="55dp"
+                        android:drawableLeft="@drawable/ic_email"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
                         android:textStyle="bold"
 
-                        android:inputType="textCapCharacters"
-                        >
-                    </EditText>
-                </androidx.cardview.widget.CardView>
 
-
-
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="50dp"
-
-                    android:text="@string/SETTING_DEVICE_WIFI"
-                    android:textSize="18sp"
-
-                    android:textColor="@color/colorPrimary"
-                    android:textAlignment="center"
-                    />
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    card_view:cardCornerRadius="4dp"
-                    app:cardElevation="10dp"
-                    android:background="@color/cardviewbg"
-                    app:cardUseCompatPadding="true"
-                    app:cardPreventCornerOverlap="false">
-                    <EditText
-                        android:id="@+id/device_ssid"
-                        android:layout_height="55dp"
-                        android:theme="@style/App_EditTextStyle"
-                        android:layout_width="match_parent"
-                        android:drawableLeft="@drawable/ic_wifi"
-                        android:hint="Wi-Fi Name"
-                        >
-                    </EditText>
+                        android:theme="@style/App_EditTextStyle"></EditText>
                 </androidx.cardview.widget.CardView>
 
 
@@ -167,20 +133,7 @@
                     app:cardElevation="10dp"
                     android:background="@color/cardviewbg"
                     app:cardUseCompatPadding="true"
-                    app:cardPreventCornerOverlap="false">
-                    <EditText
-                        android:id="@+id/device_password"
-                        android:layout_height="55dp"
-                        android:theme="@style/App_EditTextStyle"
-                        android:layout_width="match_parent"
-                        android:drawableLeft="@drawable/ic_password"
-                        android:drawableRight="@drawable/ic_view"
-                        android:hint="Wi-Fi Password"
-                        android:inputType="textPassword"
-
-                        >
-                    </EditText>
-                </androidx.cardview.widget.CardView>
+                    app:cardPreventCornerOverlap="false"/>
 
 
 

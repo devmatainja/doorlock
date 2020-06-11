@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class initSettingActivity extends AppCompatActivity  implements View.OnClickListener {
     private ListView wifiList;
     private WifiManager wifiManager;
@@ -29,7 +31,7 @@ public class initSettingActivity extends AppCompatActivity  implements View.OnCl
     WifiReceiver receiverWifi;
     private Button mButton;
     Context mContext;
-
+    FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,7 @@ public class initSettingActivity extends AppCompatActivity  implements View.OnCl
         mButton = (Button)findViewById(R.id.continuebbtn);
         mButton.setOnClickListener(this);
 
+         db = FirebaseFirestore.getInstance();
         mContext=this;
         checkLocationPermission();
     }

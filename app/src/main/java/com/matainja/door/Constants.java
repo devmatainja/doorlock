@@ -1,5 +1,11 @@
 package com.matainja.door;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 public class Constants {
 
       public static String AP_MODE_URL = "http://192.168.4.1";
@@ -22,6 +28,31 @@ http://43.247.37.202:3000/
     public static String DEVICE_DOOR_ACTION = STA_MODE_URL+"/door?";
     public static String DEVICE_DOOR_STATUS = STA_MODE_URL+"/?";
 
+    public static String getDate(String ourDate)
+    {
+        String StringDate;
+        try
+        {
+            long timestamp = 0;
+           // Log.d("ourDates", ourDate);
+            timestamp = Long.parseLong(ourDate);
+            Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+            cal.setTimeInMillis(timestamp * 1000L);
 
+            Date d = cal.getTime();
+            SimpleDateFormat formatterString = new SimpleDateFormat("EEE, d MMM yy h:mm a");
+            formatterString.setTimeZone(TimeZone.getDefault());
+            StringDate = formatterString.format(d);
+            //Log.d("ourDate", StringDate);
+
+
+            //Log.d("ourDate", ourDate);
+        }
+        catch (Exception e)
+        {
+            StringDate = "00-00-0000 00:00";
+        }
+        return StringDate;
+    }
 
 }

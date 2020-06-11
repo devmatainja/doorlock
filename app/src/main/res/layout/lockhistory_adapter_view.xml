@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    android:paddingBottom="10dp"
+    >
+
+<!--Text View for Displaying SIGN IN Text At Top of UI-->
+
+<TextView
+    android:id="@+id/door_status"
+    android:layout_width="80dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:text="HIGH"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:textAllCaps="true"
+    android:src="@drawable/ic_router" />
+
+
+<TextView android:id="@+id/door_operation_by"
+    android:layout_width="170dp"
+    android:layout_height="wrap_content"
+    android:text="gdfgdfg"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:paddingLeft="3dp"
+    android:fontFamily="@string/font_family_condensed"
+    android:layout_toRightOf="@+id/door_status"
+    android:textSize="14sp"
+    android:textStyle="bold"
+    android:paddingBottom="3dp"
+    />
+
+<TextView android:id="@+id/door_operation_date"
+    android:layout_width="170dp"
+    android:layout_height="wrap_content"
+    android:text="@string/router_configure_des"
+    android:layout_alignParentRight="true"
+    android:fontFamily="@string/font_family_condensed"
+    android:paddingTop="20dp"
+    android:paddingRight="10dp"
+    android:textSize="12sp"
+    android:layout_toRightOf="@+id/door_status"
+    android:layout_below="@+id/configure_text"
+    />
+
+
+
+
+
+</RelativeLayout>

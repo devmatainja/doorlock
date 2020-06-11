@@ -31,7 +31,18 @@
         android:theme="@style/App_EditTextStyle"
         android:layout_width="match_parent"
         android:drawableLeft="@drawable/ic_account"
-        android:hint="Wi-Fi Device Name"
+        android:hint="Device Name"
+        android:inputType="textCapWords"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/device_sl_no"
+        android:layout_height="55dp"
+        android:theme="@style/App_EditTextStyle"
+        android:layout_width="match_parent"
+        android:drawableLeft="@drawable/ic_account"
+        android:hint="Device Serial no"
         android:inputType="textCapWords"
         >
     </EditText>

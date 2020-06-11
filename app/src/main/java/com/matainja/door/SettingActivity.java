@@ -37,6 +37,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.matainja.door.Database.DatabaseAdapter;
+import com.matainja.door.Database.FireStoreHelper;
 import com.matainja.door.model.Devices;
 
 import org.json.JSONException;
@@ -59,8 +60,8 @@ public class SettingActivity extends AppCompatActivity {
     EditText mDeviceEditText;
     Button mContinuebbtn;
     EditText mDeviceEditName;
-    EditText mDeviceEditspassword;
-    String device_name;
+    EditText mDeviceEditspassword,mDevice_sl_no;
+    String device_name,deviceSlno;
     String device_ssid;
     String device_password;
     Context mcontext;
@@ -68,6 +69,8 @@ public class SettingActivity extends AppCompatActivity {
     Button mOk;
     String msg = "Please check Wifi Connected with Device & disbale Mobile Internet ";
     DatabaseAdapter dbHelper;
+    FireStoreHelper mFireStoreHelper;
+    Devices device;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +81,7 @@ public class SettingActivity extends AppCompatActivity {
         dialogpopup= new Dialog(SettingActivity.this);
         dialogMessage = new Dialog(SettingActivity.this);
 
-
+        mFireStoreHelper =new FireStoreHelper();
 
         dialogpopup.setCancelable(false);
         dialogMessage.setCancelable(false);
@@ -100,6 +103,7 @@ public class SettingActivity extends AppCompatActivity {
         mContinuebbtn = findViewById(R.id.continuebbtn);
         mDeviceEditName =findViewById(R.id.device_name);
         mDeviceEditspassword =findViewById(R.id.device_password);
+        mDevice_sl_no =findViewById(R.id.device_sl_no);
         mErrosMsg =findViewById(R.id.error_save);
 
 
@@ -128,7 +132,7 @@ public class SettingActivity extends AppCompatActivity {
         mOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SettingActivity.this,MainActivity.class);
+                Intent i = new Intent(SettingActivity.this,InternetDashBoard.class);
 
                 startActivity(i);
                 finish();
@@ -158,11 +162,16 @@ public class SettingActivity extends AppCompatActivity {
                  device_name =mDeviceEditName.getText().toString().trim();
                  device_ssid =mDeviceEditText.getText().toString().trim();
                  device_password =mDeviceEditspassword.getText().toString();
-
+                 deviceSlno = mDevice_sl_no.getText().toString().trim();
 
                 if(device_name.isEmpty())
                 {
                     mDeviceEditName.setHintTextColor(Color.RED);
+                    save_flag=true;
+                }
+                if(deviceSlno.isEmpty())
+                {
+                    mDevice_sl_no.setHintTextColor(Color.RED);
                     save_flag=true;
                 }
 
@@ -361,7 +370,7 @@ public class SettingActivity extends AppCompatActivity {
 
     private void SaveWifiConfig(){
 
-String QueryS = "ssid="+device_ssid+"&pass="+device_password;
+String QueryS = "ssid="+device_ssid+"&pass="+device_password+"&sl_no="+deviceSlno;
 String urlget = Constants.AP_MODE_SETTING_SAVE+QueryS;
         dialogpopup.show();
         mErrosMsg.setText("");
@@ -381,16 +390,26 @@ String urlget = Constants.AP_MODE_SETTING_SAVE+QueryS;
                     if(status.equals("200"))
                     {
 
-                        Devices device =new Devices();
+                         device =new Devices();
                         device.setName(device_name);
-                        device.setDevice_serial("mata12345");
+                        device.setDevice_serial(deviceSlno);
                         device.setDevice_mac_address("YB:YU:IH:LS");
                         device.setDevice_wifi_name(device_ssid);
                         device.setDevice_wifi_password(device_password);
-                        device.setOnline("online");
-                        device.setJoin_date("14-04-2020");
-                        dbHelper.DeviceRegister(device);
+                        device.setOnline("offline");
                         dialogMessage.show();
+                        dbHelper.DeviceRegister(device);
+                        // mFireStoreHelper.SaveDevice(device,this);
+
+                        new Thread( new Runnable() { @Override public void run() {
+                            // Run whatever background code you want here.
+                            mFireStoreHelper.getDevice(deviceSlno,device);
+                        } } ).start();
+
+
+                    }else
+                    {
+                        Toast.makeText(getApplicationContext(), "Please check device Serial no", Toast.LENGTH_LONG).show();
                     }
 
 
